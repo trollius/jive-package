@@ -4,8 +4,8 @@
 #' @details This function runs MCMC sampling on jive object \code{\link{make.jive}}. The jive object contains 
 #' both the dataset and set of model to be used in MCMC. This function implements both a conventional MCMC
 #' and an MCMC with thermodynamic integration. The latter option is turned off by default and can be changed by
-#' setting ncat to values > 1. The recommended ncat for TI is 10. When setting ncat > 1, make sure to specify brunin.
-#' Larger ncat values will result in longer MCMC running time (?).  
+#' setting ncat to values > 1. The recommended ncat for TI is 10. When setting ncat > 1, make sure to specify burning.
+#' As a rule of thumb set burning to 1/10 fraction of ngen. 
 #' 
 #' @param jive an object of class "jive" (see details)
 #' @param log.file name of the output file that will store the log of MCMC chain
@@ -17,14 +17,20 @@
 #' @param burning a burning phase of MCMC chain (has to be specified for thermodynamic integration)
 #' @param update.freq update frequencies for likelihood and prior level parameters
 #' @export
+#' @author Anna Kostikova and Daniele Silvestro
+#' @return none
 #' @examples
-#' jiveMCMC(my.jive, log.file="ny.jive_MCMC.log") 
-
+#' ## running a simple MCMC chain
+#' my.jive <- jiveMake(tree, traits,  model.var="OU1", model.mean="BM", model.lik="Multinorm")
+#' jiveMCMC(my.jive, log.file="my.jive_MCMC.log") 
+#'
+#' ## running an MCMC chain with thermodynamic integration
+#' jiveMCMC(my.jive, log.file="my.jive_MCMC.log", ncat=10, ngen=5000000, burnin=500000) 
 
 
 # MCMC MAIN ALGORITHM
 jiveMCMC <- function(jive, log.file="jive_mcmc.log", sampling.freq=1000, print.freq=1000, 
-				ncat=1, beta.param=0.3, ngen=5500000, burnin=0, update.freq=NULL)
+				ncat=1, beta.param=0.3, ngen=5000000, burnin=0, update.freq=NULL)
 {
 	
 			 

@@ -28,6 +28,7 @@ Imports:
     scales,
     TreeSim,
     gtools,
-    phytools
+    phytools,
+    geiger
 License: GPL-2
 Repository: CRAN
