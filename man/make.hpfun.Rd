@@ -12,6 +12,11 @@ make.hpfun(hpf = "Uniform", hp.pars, ...)
 
 \item{...}{additional parameters that can be passed to a density function}
 }
+\value{
+Hyper-prior density function (function)
+
+A hyper-prior density function (function)
+}
 \description{
 This function creates a hyper-prior density function.
 Currently supported density function are Uniform, Gamma and Normal.
@@ -25,5 +30,8 @@ must be a vector of two values and cannot be left empty.
 }
 \examples{
 my.hp <- make.hpfun(hpf="Uniform", hp.pars=c(1,2))
+}
+\author{
+Anna Kostikova and Daniele Silvestro
 }
 

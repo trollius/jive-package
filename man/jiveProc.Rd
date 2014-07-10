@@ -3,15 +3,16 @@
 \alias{jiveProc}
 \title{Process jive MCMC}
 \usage{
-jiveProc(log.file = "jive_mcmc_OU1.log", n = 50, stat = jive.mode,
+jiveProc(log.file = "jive_mcmc_OU1.log", n.spec, stat = jiveMode,
   burning = 0, probHPD = 0.95, verbose = TRUE, ...)
 }
 \arguments{
-\item{log.file}{log file recorded by jiveMCMC function}
+\item{log.file}{log file recorded by \code{\link{jiveMCMC}} function}
 
 \item{n}{number of species}
 
-\item{stat}{which statistics to use to summarize MCMC. By default set to mode for prior level parameters and mean for likelihood level parameters}
+\item{stat}{which statistics to use to summarize MCMC. By default, set to mode
+for prior level parameters and mean for likelihood level parameters. Can also be \code{\link{mean}}, \code{\link{median}}.}
 
 \item{burning}{how much of burning to disregard}
 
@@ -21,15 +22,21 @@ jiveProc(log.file = "jive_mcmc_OU1.log", n = 50, stat = jive.mode,
 
 \item{...}{additional parameters that can be passed to HPDinterval function}
 }
+\value{
+A list of averaged statistics from MCMC chain for each parameter (list)
+}
 \description{
-What it does
+Process the jiveMCMC output log file
 }
 \details{
-This function processes the output log file of the jiveMCMC function.
+This function processes the output log file of the \code{\link{jiveMCMC}} function.
 It summarizes posterior sample for each variable into summary statistics (
 e.g. mean, mode, median) and calculates HPD invervals
 }
 \examples{
 my.summary <- jiveProc(log.file="OU_log.log", n = 50, verbose=FALSE)
+}
+\author{
+Anna Kostikova
 }
 

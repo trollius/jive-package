@@ -18,6 +18,8 @@
 #' @param model.mean printing frequency of the MCMC chain (how often chain will be printed in the R console)					
 #' @param model.lik number of classes for thermodynamic integration (see details)
 #' @export
+#' @author Anna Kostikova
+#' @return An object of class jive
 #' @examples
 #' ## number of species we want to simulate
 #' n <- 50

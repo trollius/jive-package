@@ -14,6 +14,10 @@
 #' @param hpf name of a density function. Supported density functions are: Uniform, Gamma and Normal
 #' @param hp.pars a vector of density function parameters
 #' @param ... additional parameters that can be passed to a density function
+#' @return Hyper-prior density function (function)
+#' @export
+#' @author Anna Kostikova and Daniele Silvestro
+#' @return A hyper-prior density function (function)
 #' @examples
 #' my.hp <- make.hpfun(hpf="Uniform", hp.pars=c(1,2))
 

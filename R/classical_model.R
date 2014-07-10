@@ -20,8 +20,10 @@
 #' @param surv.rate.min survival rate
 #' @param seed seed value for reproducibility
 #' @export
+#' @author Sacha Laurent
+#' @return An object of class phylo  and a set of parameters used for simulation.
 #' @examples
-#' lol <- classicalModel(1, 1, 500, 0.1, 0.01, .01, .2, seed=1506621)
+#' tree <- classicalModel(1, 1, 500, 0.1, 0.01, .01, .2, seed=1506621)
 
 
 classicalModel <- function(nb.divers.shifts, nb.mass.ext, nb.spec, lambda.max, lambda.min, mu.min, surv.rate.min, seed=1){

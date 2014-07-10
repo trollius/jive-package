@@ -23,6 +23,9 @@ classicalModel(nb.divers.shifts, nb.mass.ext, nb.spec, lambda.max, lambda.min,
 
 \item{seed}{seed value for reproducibility}
 }
+\value{
+An object of class phylo  and a set of parameters used for simulation.
+}
 \description{
 Simulate species trees with complex diversification scenarios
 }
@@ -35,6 +38,9 @@ values for lambda and mu, and the minimum survival rate for mass extinction even
 User gets as output the tree simulated, and all the parameters used for its simulation.
 }
 \examples{
-lol <- classicalModel(1, 1, 500, 0.1, 0.01, .01, .2, seed=1506621)
+tree <- classicalModel(1, 1, 500, 0.1, 0.01, .01, .2, seed=1506621)
+}
+\author{
+Sacha Laurent
 }
 

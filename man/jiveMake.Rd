@@ -17,6 +17,9 @@ jiveMake(simmap, traits, model.var = "OU1", model.mean = "BM",
 
 \item{model.lik}{number of classes for thermodynamic integration (see details)}
 }
+\value{
+An object of class jive
+}
 \description{
 This function makes a jive object from a matrix of intraspecific observations
 and species phylogeny. The obtained jive object can than be used as an input to \code{\link{jiveMCMC}} function
@@ -58,7 +61,9 @@ y <- data.frame(tree$tip.label, rep(1, n))
 tree$node.label <- rep("1", n-1)
 
 ## simulate species-specific variances
-sigma.val <- abs(OUwie.sim(tree, y, simmap.tree=FALSE, scaleHeight=TRUE, alpha=rep(alpha,2), sigma.sq=rep(sig.sq,2), theta0=theta0, theta=theta)$X)
+sigma.val <- abs(OUwie.sim(tree, y, simmap.tree=FALSE,
+scaleHeight=TRUE, alpha=rep(alpha,2),
+sigma.sq=rep(sig.sq,2), theta0=theta0, theta=theta)$X)
 
 ## simulate species-specific means
 mean.val <- mvrnorm(mu=rep(mu0, length(tree$tip)), Sigma=(sig.sq.bm * vcv(tree)))
@@ -67,7 +72,8 @@ mean.val <- mvrnorm(mu=rep(mu0, length(tree$tip)), Sigma=(sig.sq.bm * vcv(tree))
 spec.obs <- rpois(n, mean.obs)
 
 ## generate a data matrix where rows are species and columns are individual observations
-traits <- matrix(rnorm(M.spec.obs * n, mean=mean.val, sd=sqrt(sigma.val)), nrow=n, ncol=max(spec.obs))
+traits <- matrix(rnorm(M.spec.obs * n, mean=mean.val, sd=sqrt(sigma.val)),
+nrow=n, ncol=max(spec.obs))
 traits <- cbind(as.matrix(max(spec.obs) - spec.obs), traits)
 
 ## function to replace empty cells with NA
@@ -83,5 +89,8 @@ traits <- as.matrix(t(apply(traits, 1, foo)))
 ## add species names to rownames
 rownames(traits) <- tree$tip.label
 my.jive <- jiveMake(tree, traits,  model.var="OU1", model.mean="BM", model.lik="Multinorm")
+}
+\author{
+Anna Kostikova
 }
 

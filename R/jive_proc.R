@@ -1,32 +1,35 @@
 #' @title Process jive MCMC
-#' @description What it does
+#' @description Process the jiveMCMC output log file
 #' 
-#' @details This function processes the output log file of the jiveMCMC function. 
+#' @details This function processes the output log file of the \code{\link{jiveMCMC}} function. 
 #' It summarizes posterior sample for each variable into summary statistics (
 #' e.g. mean, mode, median) and calculates HPD invervals
 #' 
 #' 
 #' 
 #' 
-#' @param log.file log file recorded by jiveMCMC function
+#' @param log.file log file recorded by \code{\link{jiveMCMC}} function
 #' @param n number of species
-#' @param stat which statistics to use to summarize MCMC. By default set to mode for prior level parameters and mean for likelihood level parameters
+#' @param stat which statistics to use to summarize MCMC. By default, set to mode 
+#' for prior level parameters and mean for likelihood level parameters. Can also be \code{\link{mean}}, \code{\link{median}}.
 #' @param burning how much of burning to disregard		
 #' @param probHPD set HPD intervals 
 #' @param verbose how much of statistics to return
 #' @param ... additional parameters that can be passed to HPDinterval function
+#' @author Anna Kostikova
+#' @return A list of averaged statistics from MCMC chain for each parameter (list)
 #' @export
 #' @examples
 #' my.summary <- jiveProc(log.file="OU_log.log", n = 50, verbose=FALSE)
 
 
-jiveProc<-function(log.file = "jive_mcmc_OU1.log", n = 50, stat=jive.mode, burning = 0, probHPD = 0.95, verbose=TRUE, ...){
+jiveProc<-function(log.file = "jive_mcmc_OU1.log", n.spec, stat=jiveMode, burning = 0, probHPD = 0.95, verbose=TRUE, ...){
 		# Processing of the MCMC log file
 		# User should provide number of species in an analysed tree
 		#
 		# Args:
 		# 	log.file:	log file recorded by jiveMCMC function
-		#	n:  		number of species
+		#	n.spec:  		number of species
 		#	stat:		which statistics to use to summarize MCMC
 		#	burning:	how much of burning to disregard
 		#	probHPD:	set HPD intervals 	
@@ -35,9 +38,10 @@ jiveProc<-function(log.file = "jive_mcmc_OU1.log", n = 50, stat=jive.mode, burni
 		# Returns:
 		#	List (averaged statistics from MCMC chain for each parameter).
 		
+		n <- n.spec
 		
 		# calculate mode
-		jive.mode<-function(x){
+		jiveMode<-function(x){
 			y=hdr(x, all.modes=F)$mode
 			return(y)#print(y)
 		}
