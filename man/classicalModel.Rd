@@ -3,33 +3,38 @@
 \alias{classicalModel}
 \title{Simulate trees}
 \usage{
-classicalModel(nb_diversification_shift, nb_mass_extinction, total_nb_species,
-  lambda_max, lambda_min, mu_min, survival_rate_min, seed = 1)
+classicalModel(nb.divers.shifts, nb.mass.ext, nb.spec, lambda.max, lambda.min,
+  mu.min, surv.rate.min, seed = 1)
 }
 \arguments{
-\item{nb_diversification_shift}{fff}
+\item{nb.divers.shifts}{number of diversification shifts on the tree}
 
-\item{nb_mass_extinction}{fff}
+\item{nb.mass.ext}{number of mass extinction events}
 
-\item{total_nb_species}{fff}
+\item{nb.spec}{total number of species in the final tree}
 
-\item{lambda_max}{ff}
+\item{lambda.max}{maximum value of speciation rate}
 
-\item{lambda_min}{fff}
+\item{lambda.min}{minimum value of speciation rate}
 
-\item{mu_min}{ff}
+\item{mu.min}{minimum value of extinction rate}
 
-\item{survival_rate_min}{ff}
+\item{surv.rate.min}{survival rate}
 
-\item{seed}{ff}
+\item{seed}{seed value for reproducibility}
 }
 \description{
-What it does
+Simulate species trees with complex diversification scenarios
 }
 \details{
-This function
+The aim of the function is to simulate species trees with complex diversification scenarios,
+with changing diversification rates at inner nodes of the phylogeny and mass extinction events at
+particular random times in the past. The user can choose the total number of species, the number
+of diversification rate changes, the number of mass extinction events, the minimum and maximum
+values for lambda and mu, and the minimum survival rate for mass extinction events. Then the actual rates are choosen randomly.
+User gets as output the tree simulated, and all the parameters used for its simulation.
 }
 \examples{
-lol <- classical_model(1, 1, 500, 0.1, 0.01, .01, .2, seed=1506621)
+lol <- classicalModel(1, 1, 500, 0.1, 0.01, .01, .2, seed=1506621)
 }
 

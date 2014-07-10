@@ -1,23 +1,29 @@
-#' @title Title
-#' @description Short description
+#' @title Hyper-prior function
+#' @description This function creates a hyper-prior density function. 
+#' Currently supported density function are Uniform, Gamma and Normal. 
+#' The resulting function is used during MCMC \code{\link{jiveMCMC}}
+#' to estimate parameters of priors.
 #' 
-#' @details Detailed description
+#' @details There are three currently implemented density function: 
+#' Uniform, Gamma and Normal. Each of these densities requires two input parameters and hp.pars 
+#' must be a vector of two values and cannot be left empty.
 #' 
 #' 
 #' 
 #' 
-#' @param hpf description
-#' @param hp.pars description
-#' @param ... description
+#' @param hpf name of a density function. Supported density functions are: Uniform, Gamma and Normal
+#' @param hp.pars a vector of density function parameters
+#' @param ... additional parameters that can be passed to a density function
 #' @examples
 #' my.hp <- make.hpfun(hpf="Uniform", hp.pars=c(1,2))
+
 
 make.hpfun <-function(hpf="Uniform", hp.pars, ...){
 	# Function that makes function of hyper prior
 	#
 	# Args:
-	# 	hpf:  		distribution of hyper prior
-	#	hp.pars:	parameters of a distribution
+	# 	hpf:  		name of a density function
+	#	hp.pars:	parameters of a density function
 	#
 	# Returns:
 	#	Hyper-prior function (function).
