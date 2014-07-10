@@ -1,9 +1,18 @@
-#' This is data to be included in my package
-#'
+#' @title Jive test dataset
+#' @description A set of trees and trait matrices generated under BM, OU1 and OUM models
+#' 
+#' @details This dataset includes a set of simulated trees and trait values. The parameters used for 
+#' simulation of these datasets are:
+#' \itemsize{
+#' 	\item BM. For model.mean - BM with sig.sq = 0.5, anc.state = 350; model.var - BM with sig.sq = , anc.state = 
+#' 	\item OU1. For model.mean - BM with sig.sq = 0.5, anc.state = 350; model.var - OU1 with alpha = , sig.sq = , anc.state = , theta1 = 
+#' 	\item BM. For model.mean - BM with sig.sq = 0.5, anc.state = 350; model.var - OUM with alpha = , sig.sq = , anc.state = , theta1 = , theta2 = 
+#' }
+#' 
 #' @name jiveData
 #' @usage jiveData
+#' @format Three phylogenetic trees of 50 species in phylo format and three data matrices with 50 rows
 #' @docType data
-#' @author My Name \email{blahblah@@roxygen.org}
-#' @references \url{data_blah.com}
-#' @keywords data
+#' @author Anna Kostikova 
+#' @keywords datasets, data
 NULL
