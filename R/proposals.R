@@ -1,17 +1,3 @@
-#' @title Proposal functions
-#' @description Multiplier and sliding window proposals
-#' 
-#' @details Make a function to get a hyper prior
-#' 
-#' 
-#' 
-#' 
-#' @param i fff
-#' @param d fff
-#' @param ... ff
-#' @examples
-#' sw <- slidingWin(i=2, d=9)
-
 
 slidingWin <- function(i, d) {
 	# Slidign window proporal unconstrained at maximum 

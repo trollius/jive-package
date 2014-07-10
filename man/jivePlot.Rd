@@ -9,30 +9,36 @@ jivePlot(tree, proc.jive, regime, cols = c("blue", "green"),
 \arguments{
 \item{tree}{an object of class "jive" (see details)}
 
-\item{proc.jive}{name of the output file that will store the log of MCMC chain}
+\item{proc.jive}{an object from \code{\link{jiveProc}} function (see details)}
 
-\item{regime}{sampling frequency of the MCMC chain (how often chain will be saved into output file}
+\item{regime}{a named vector of selective regimes}
 
-\item{cols}{printing frequency of the MCMC chain (how often chain will be printed in the R console)}
+\item{cols}{a vector of colours for selective regimes}
 
-\item{cex.label}{number of classes for thermodynamic integration (see details)}
+\item{cex.label}{magnification for tip labels}
 
-\item{cex.circle}{}
+\item{cex.circle}{magnification for circles representing species-specific variances}
 
-\item{lab.off}{}
+\item{lab.off}{offset for tip labels}
 
-\item{ladder}{}
+\item{ladder}{if tree should be ladderized}
+
+\item{...}{additional parameters passed to \code{\link{ladderize}} and \code{\link{plot.phylo}} functions}
+}
+\value{
+nothing
 }
 \description{
-Creates a jive object from intraspecific observations and species phylogeny
+Plots jive MCMC output
 }
 \details{
-This function creates a jive object needed for \code{\link{jiveMCMC}} function.
-Trait values must be stored as a matrix, where lines are vector of observations for each species, with NA for no data.
-Rownames are species names. Phylogenetic tree must be provided as either simmap object (for models with multiple regimes)
-or as a phylo object (for BM or OU1 models)
+This function plots estimated species-specific variances on the tree. The spec
+The species-specific variances are calculated by \code{\link{jiveProc}}
 }
 \examples{
 jivePlot(phy1, my.l, regime)
+}
+\author{
+Anna Kostikova
 }
 
