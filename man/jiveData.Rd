@@ -2,18 +2,26 @@
 \docType{data}
 \name{jiveData}
 \alias{jiveData}
-\title{This is data to be included in my package}
+\title{Jive test dataset}
+\format{Three phylogenetic trees of 50 species in phylo format and three data matrices with 50 rows}
 \usage{
 jiveData
 }
 \description{
-This is data to be included in my package
+A set of trees and trait matrices generated under BM, OU1 and OUM models
+}
+\details{
+This dataset includes a set of simulated trees and trait values. The parameters used for
+simulation of these datasets are:
+\itemize{
+	\item BM. For model.mean - BM with sig.sq = 0.5, anc.state = 350; model.var - BM with sig.sq = , anc.state =
+	\item OU1. For model.mean - BM with sig.sq = 0.5, anc.state = 350; model.var - OU1 with alpha = , sig.sq = , anc.state = , theta1 =
+	\item BM. For model.mean - BM with sig.sq = 0.5, anc.state = 350; model.var - OUM with alpha = , sig.sq = , anc.state = , theta1 = , theta2 =
+}
 }
 \author{
-My Name \email{blahblah@roxygen.org}
-}
-\references{
-\url{data_blah.com}
+Anna Kostikova
 }
 \keyword{data}
+\keyword{datasets,}
 

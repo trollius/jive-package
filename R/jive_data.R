@@ -3,7 +3,7 @@
 #' 
 #' @details This dataset includes a set of simulated trees and trait values. The parameters used for 
 #' simulation of these datasets are:
-#' \itemsize{
+#' \itemize{
 #' 	\item BM. For model.mean - BM with sig.sq = 0.5, anc.state = 350; model.var - BM with sig.sq = , anc.state = 
 #' 	\item OU1. For model.mean - BM with sig.sq = 0.5, anc.state = 350; model.var - OU1 with alpha = , sig.sq = , anc.state = , theta1 = 
 #' 	\item BM. For model.mean - BM with sig.sq = 0.5, anc.state = 350; model.var - OUM with alpha = , sig.sq = , anc.state = , theta1 = , theta2 = 
