@@ -28,7 +28,7 @@ Imports:
     scales,
     TreeSim,
     gtools,
-    phytools,
-    geiger
+    geiger,
+    MCMCpack
 License: GPL-2
 Repository: CRAN

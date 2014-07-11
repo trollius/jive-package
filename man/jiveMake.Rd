@@ -35,6 +35,9 @@ There are three models implemeted for estimation of species variances evolution 
 species means is only implemented with BM model. Species-specific distribution are models as multivariate normal distribution
 }
 \examples{
+library(OUwie)
+library(phytools)
+library(MASS)
 ## number of species we want to simulate
 n <- 50
 
@@ -72,7 +75,7 @@ mean.val <- mvrnorm(mu=rep(mu0, length(tree$tip)), Sigma=(sig.sq.bm * vcv(tree))
 spec.obs <- rpois(n, mean.obs)
 
 ## generate a data matrix where rows are species and columns are individual observations
-traits <- matrix(rnorm(M.spec.obs * n, mean=mean.val, sd=sqrt(sigma.val)),
+traits <- matrix(rnorm(max(spec.obs) * n, mean=mean.val, sd=sqrt(sigma.val)),
 nrow=n, ncol=max(spec.obs))
 traits <- cbind(as.matrix(max(spec.obs) - spec.obs), traits)
 

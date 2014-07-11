@@ -3,7 +3,7 @@
 \alias{jivePlot}
 \title{Plot jive MCMC object}
 \usage{
-jivePlot(tree, proc.jive, regime, cols = c("blue", "green"),
+jivePlot(tree, proc.jive, regimes, cols = c("blue", "green"),
   cex.label = 0.7, cex.circle = 2, lab.off = 0.025, ladder = TRUE, ...)
 }
 \arguments{
@@ -11,7 +11,7 @@ jivePlot(tree, proc.jive, regime, cols = c("blue", "green"),
 
 \item{proc.jive}{an object from \code{\link{jiveProc}} function (see details)}
 
-\item{regime}{a named vector of selective regimes}
+\item{regimes}{a named vector of selective regimes}
 
 \item{cols}{a vector of colours for selective regimes}
 
@@ -36,7 +36,14 @@ This function plots estimated species-specific variances on the tree. The spec
 The species-specific variances are calculated by \code{\link{jiveProc}}
 }
 \examples{
-jivePlot(phy1, my.l, regime)
+## Load test data
+data(regimesOU1)
+data(traitsOU1)
+data(treeOU1)
+my.jive <- jiveMake(treeOU1, traitsOU1,  model.var="OU1", model.mean="BM", model.lik="Multinorm")
+jiveMCMC(my.jive, log.file="OU1_log.log", sampling.freq=10, print.freq=100, ngen=5000)
+my.summary <- jiveProc(log.file="OU1_log.log", n = 50, verbose=FALSE)
+jivePlot(treeOU1, my.summary, regimesOU1, cols="red")
 }
 \author{
 Anna Kostikova

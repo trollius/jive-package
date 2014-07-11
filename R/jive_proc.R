@@ -9,7 +9,7 @@
 #' 
 #' 
 #' @param log.file log file recorded by \code{\link{jiveMCMC}} function
-#' @param n number of species
+#' @param n.spec number of species
 #' @param stat which statistics to use to summarize MCMC. By default, set to mode 
 #' for prior level parameters and mean for likelihood level parameters. Can also be \code{\link{mean}}, \code{\link{median}}.
 #' @param burning how much of burning to disregard		
@@ -20,7 +20,12 @@
 #' @return A list of averaged statistics from MCMC chain for each parameter (list)
 #' @export
 #' @examples
-#' my.summary <- jiveProc(log.file="OU_log.log", n = 50, verbose=FALSE)
+#' ## Load test data
+#' data(traitsOU1)
+#' data(treeOU1)
+#' my.jive <- jiveMake(treeOU1, traitsOU1,  model.var="OU1", model.mean="BM", model.lik="Multinorm")
+#' jiveMCMC(my.jive, log.file="OU1_log.log", sampling.freq=10, print.freq=100, ngen=5000)  
+#' my.summary <- jiveProc(log.file="OU1_log.log", n = 50, verbose=FALSE)
 
 
 jiveProc<-function(log.file = "jive_mcmc_OU1.log", n.spec, stat=jiveMode, burning = 0, probHPD = 0.95, verbose=TRUE, ...){
@@ -42,7 +47,7 @@ jiveProc<-function(log.file = "jive_mcmc_OU1.log", n.spec, stat=jiveMode, burnin
 		
 		# calculate mode
 		jiveMode<-function(x){
-			y=hdr(x, all.modes=F)$mode
+			y=hdrcde::hdr(x, all.modes=F)$mode
 			return(y)#print(y)
 		}
 		

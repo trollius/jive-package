@@ -21,6 +21,9 @@
 #' @author Anna Kostikova
 #' @return An object of class jive
 #' @examples
+#' library(OUwie)
+#' library(phytools)
+#' library(MASS)
 #' ## number of species we want to simulate
 #' n <- 50
 #' 
@@ -58,7 +61,7 @@
 #' spec.obs <- rpois(n, mean.obs)
 #' 
 #' ## generate a data matrix where rows are species and columns are individual observations	
-#' traits <- matrix(rnorm(M.spec.obs * n, mean=mean.val, sd=sqrt(sigma.val)), 
+#' traits <- matrix(rnorm(max(spec.obs) * n, mean=mean.val, sd=sqrt(sigma.val)), 
 #' nrow=n, ncol=max(spec.obs))
 #' traits <- cbind(as.matrix(max(spec.obs) - spec.obs), traits)
 #' 

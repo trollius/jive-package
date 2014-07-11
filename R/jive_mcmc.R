@@ -1,7 +1,7 @@
 #' @title Jive MCMC
 #' @description Implements Markov chain Monte Carlo sampling for trait evolutionary models with intraspecific data
 #' 
-#' @details This function runs MCMC sampling on jive object \code{\link{make.jive}}. The jive object contains 
+#' @details This function runs MCMC sampling on jive object \code{\link{jiveMake}}. The jive object contains 
 #' both the dataset and set of model to be used in MCMC. This function implements both a conventional MCMC
 #' and an MCMC with thermodynamic integration. The latter option is turned off by default and can be changed by
 #' setting ncat to values > 1. The recommended ncat for TI is 10. When setting ncat > 1, make sure to specify burning.
@@ -14,18 +14,21 @@
 #' @param ncat number of classes for thermodynamic integration (see details)
 #' @param beta.param beta value to define classes for thermodynamic integration (see details)
 #' @param ngen number of generation in MCMC chain
-#' @param burning a burning phase of MCMC chain (has to be specified for thermodynamic integration)
+#' @param burnin a burning phase of MCMC chain (has to be specified for thermodynamic integration)
 #' @param update.freq update frequencies for likelihood and prior level parameters
 #' @export
 #' @author Anna Kostikova and Daniele Silvestro
 #' @return none
 #' @examples
-#' ## running a simple MCMC chain
-#' my.jive <- jiveMake(tree, traits,  model.var="OU1", model.mean="BM", model.lik="Multinorm")
-#' jiveMCMC(my.jive, log.file="my.jive_MCMC.log") 
+#' ## Load test data
+#' data(traitsOU1)
+#' data(treeOU1)
+#' ## Run a simple MCMC chain
+#' my.jive <- jiveMake(treeOU1, traitsOU1,  model.var="OU1", model.mean="BM", model.lik="Multinorm")
+#' jiveMCMC(my.jive, log.file="my.jive_MCMC.log", sampling.freq=10, print.freq=100, ngen=5000) 
 #'
-#' ## running an MCMC chain with thermodynamic integration
-#' jiveMCMC(my.jive, log.file="my.jive_MCMC.log", ncat=10, ngen=5000000, burnin=500000) 
+#' ## Run an MCMC chain with thermodynamic integration
+#' jiveMCMC(my.jive, log.file="my.jive_MCMC.log", ncat=10, sampling.freq=10, print.freq=100, ngen=5000, burnin=500) 
 
 
 # MCMC MAIN ALGORITHM

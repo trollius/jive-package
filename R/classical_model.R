@@ -42,7 +42,7 @@ classicalModel <- function(nb.divers.shifts, nb.mass.ext, nb.spec, lambda.max, l
 		# 			
 		# Returns:
 		#	An object of class phylo  and a set of parameters used for simulation.
-		
+
 		set.seed(seed)
 		print(seed)
 		vect_nb_spec <- rep(0, nb.divers.shifts+1)
