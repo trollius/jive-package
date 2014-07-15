@@ -4,7 +4,7 @@
 \title{Jive MCMC}
 \usage{
 jiveMCMC(jive, log.file = "jive_mcmc.log", sampling.freq = 1000,
-  print.freq = 1000, ncat = 1, beta.param = 0.3, ngen = 5000000,
+  print.freq = 1000, ncat = 1, beta.param = 0.3, ngen = 5e+06,
   burnin = 0, update.freq = NULL)
 }
 \arguments{

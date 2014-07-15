@@ -2,7 +2,7 @@
 # d  <- rbind(rnorm(1000, mean=6, sd=0.01), rnorm(1000, mean=3, sd=1.5))
 
 # # rescale them
-# rs <- rescale(d, to=c(10.5,11.5))
+# rs <- scales::rescale(d, to=c(10.5,11.5))
 # rs1 <- re[1:1000]
 # rs2 <- re[10001:2000]
 

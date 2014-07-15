@@ -29,6 +29,8 @@ Imports:
     TreeSim,
     gtools,
     geiger,
-    MCMCpack
+    picante,
+    MCMCpack,
+    phyclust
 License: GPL-2
 Repository: CRAN

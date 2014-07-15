@@ -46,7 +46,7 @@ classicalModel <- function(nb.divers.shifts, nb.mass.ext, nb.spec, lambda.max, l
 		set.seed(seed)
 		print(seed)
 		vect_nb_spec <- rep(0, nb.divers.shifts+1)
-		while (sum(vect_nb_spec<2) | sum(vect_nb_spec)!=nb.spec)   vect_nb_spec <- round(rdirichlet(1, rep(1, nb.divers.shifts+1))*nb.spec)
+		while (sum(vect_nb_spec<2) | sum(vect_nb_spec)!=nb.spec)   vect_nb_spec <- round(MCMCpack::rdirichlet(1, rep(1, nb.divers.shifts+1))*nb.spec)
 		param <- data.frame(l=rep(0, nb.divers.shifts+1), m=rep(0, nb.divers.shifts+1), spec=t(vect_nb_spec))
 		for (i in 1:(nb.divers.shifts+1)){
 		param[i, "l"] <- runif(1, min=lambda.min, max=lambda.max)
