@@ -3,8 +3,8 @@
 \alias{plotTraitgram}
 \title{Plot traitgrams object}
 \usage{
-plotTraitgram(fitted.model = OUwie_OUM, anc.model = "ER", reps = 5,
-  plot.grey.only = "FALSE", ...)
+plotTraitgram(fitted.model, anc.model, reps = 5, plot.grey.only = "FALSE",
+  ...)
 }
 \arguments{
 \item{fitted.model}{a fitted object of class "OUwie" (see details)}
@@ -24,7 +24,15 @@ nothing
 Plots traitgrams under different evolutionary models
 }
 \details{
-This function plots
+This function plots the dynamics of trait evolution under Ornstein Uhlenbeck (OU) models.
+The user needs to specify the parameters of an OU model (it can include multiple regimes OUM, OUMV..),
+which are typically obtained from trait optimization (e.g. using OUwie package). A user-defined
+number of trait simulations are generated under the provided model and parameters, and assuming a
+trait value at the root estimated under Brownian motion. Each simulation records trait values at tips and nodes.
+Traitgrams (cf. Phytools or Picante functions) are inferred by estimating the trait trajectories along the
+branches based on the OU bridge (see Serrano-Serrano et. al in review). The function generates a plot of the 95%
+CI of the trait space through time based on all simulations and/or traitgrams of single simulations with branches
+colored in function of the OU regimes.
 }
 \examples{
 ## Load test data
@@ -36,7 +44,8 @@ tree1 		<- chronopl(tree1, 1)
 regime1		<- rep(c(0,1),each=20)
 names(regime1) <- tree1$tip.label
 sim1 		<- make.simmap(tree1, regime1, model="ER", nsim=1, pi="estimated")
-traits1 <- OUwie.sim(sim1, simmap.tree=TRUE, alpha=c(1.5,1.5), sigma.sq=c(0.1,0.1), theta0=2.5, theta=c(1.0,6.0))
+traits1 <- OUwie.sim(sim1, simmap.tree=TRUE, alpha=c(1.5,1.5),
+sigma.sq=c(0.1,0.1), theta0=2.5, theta=c(1.0,6.0))
 traits1 <- data.frame(traits1[,1],regime1,traits1[,2])
 OUwie_OUM <- OUwie(sim1, traits1, model="OUM", simmap.tree=TRUE)
 par(mfrow=c(1,2))

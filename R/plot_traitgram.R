@@ -1,8 +1,15 @@
 #' @title Plot traitgrams object
 #' @description Plots traitgrams under different evolutionary models
 #' 
-#' @details This function plots 
-#' 
+#' @details This function plots the dynamics of trait evolution under Ornstein Uhlenbeck (OU) models.
+#' The user needs to specify the parameters of an OU model (it can include multiple regimes OUM, OUMV..),
+#' which are typically obtained from trait optimization (e.g. using OUwie package). A user-defined 
+#' number of trait simulations are generated under the provided model and parameters, and assuming a 
+#' trait value at the root estimated under Brownian motion. Each simulation records trait values at tips and nodes. 
+#' Traitgrams (cf. Phytools or Picante functions) are inferred by estimating the trait trajectories along the 
+#' branches based on the OU bridge (see Serrano-Serrano et. al in review). The function generates a plot of the 95% 
+#' CI of the trait space through time based on all simulations and/or traitgrams of single simulations with branches
+#' colored in function of the OU regimes.	
 #' 
 #' @param fitted.model a fitted object of class "OUwie" (see details)
 #' @param anc.model a name of the model for ancstral state reconstruction (see details)
@@ -29,6 +36,7 @@
 #' par(mfrow=c(1,2))
 #' plotTraitgram(fitted.model=OUwie_OUM, anc.model="ER", reps=5, plot.grey.only = "TRUE")
 #' plotTraitgram(fitted.model=OUwie_OUM, anc.model="ER", reps=5, plot.grey.only = "FALSE")
+
 
 
 
