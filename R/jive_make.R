@@ -21,6 +21,7 @@
 #' @author Anna Kostikova
 #' @return An object of class jive
 #' @examples
+#' library(geiger)
 #' library(OUwie)
 #' library(phytools)
 #' library(MASS)
@@ -28,7 +29,8 @@
 #' n <- 50
 #' 
 #' ## generate tree with a pure birth model and scale it to the height of 1
-#' tree <- pbtree(b = 1, n = n, scale = 1, nsim = 1, ape = TRUE)
+#' tree  <- pbtree(b = 1, n = n, scale = 1, nsim = 1, ape = TRUE)
+#' treeb <- tree
 #' 
 #' ## set parameters for OU1 model of species-specific variances
 #' sig.sq <- 0.9
@@ -77,7 +79,7 @@
 #' 
 #' ## add species names to rownames
 #' rownames(traits) <- tree$tip.label
-#' my.jive <- jiveMake(tree, traits,  model.var="OU1", model.mean="BM", model.lik="Multinorm")
+#' my.jive <- jiveMake(treeb, traits,  model.var="OU1", model.mean="BM", model.lik="Multinorm")
 
 
 
